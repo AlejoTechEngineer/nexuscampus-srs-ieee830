@@ -1,0 +1,23 @@
+# No subir archivos editables de Office (solo se entrega el PDF final)
+*.docx
+*.doc
+*.dotx
+*.docm
+*.rtf
+*.odt
+*.pptx
+*.xlsx
+
+# Archivos temporales y de bloqueo de Office
+~$*
+*.tmp
+*.bak
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores / IDE
+.vscode/
+.idea/
