@@ -49,11 +49,11 @@ El trabajo presenta una **Especificación de Requisitos del Software (SRS)** del
 
 > **Estándar:** IEEE 830-1998.
 > **Producto:** NexusCampus (colaboración académica).
-> **Alcance:** subsistema de gestión de tareas y de notificaciones, a partir de dos casos de uso.
+> **Alcance:** subsistema de acceso a equipos, gestión de tareas, seguimiento y notificaciones, a partir de cuatro casos de uso.
 
 ### 🌟 ¿Qué aporta este documento?
 
-- 🎯 **SRS acotado** a los casos de uso UC-03 y UC-08, el núcleo funcional del producto.
+- 🎯 **SRS acotado** a los casos de uso UC-01, UC-03, UC-04 y UC-08, que cubren el ciclo completo del producto.
 - 🧾 **Fichas de requisitos** con Importancia, Urgencia, Estado, Estabilidad y Riesgo.
 - 🗂️ **Diccionario de datos** estilo Wiegers, modelo de entidades y matriz CRUD.
 - 🔗 **Matriz de trazabilidad** entre requisitos funcionales y requisitos del usuario, sin necesidades huérfanas.
@@ -64,7 +64,7 @@ El trabajo presenta una **Especificación de Requisitos del Software (SRS)** del
 
 <table align="center">
   <tr><th>Elemento</th><th>Descripción</th></tr>
-  <tr><td><code>Desarrollo_Proyecto_Alejandro_De_Mendoza_Tovar.pdf</code></td><td>📘 Documento SRS completo: introducción, descripción general, requisitos específicos, diccionario de datos, matriz CRUD y matriz de trazabilidad</td></tr>
+  <tr><td><code>Desarrollo_Proyecto_Alejandro_De_Mendoza_Tovar.pdf</code></td><td>📘 Documento SRS completo: ficha del documento, introducción con personal involucrado, descripción general, requisitos específicos, diccionario de datos, matriz CRUD y matriz de trazabilidad</td></tr>
   <tr><td><code>README.md</code></td><td>📄 Este documento</td></tr>
   <tr><td><code>LICENSE</code></td><td>⚖️ Licencia MIT</td></tr>
   <tr><td><code>.gitignore</code></td><td>🚫 Mantiene en local los documentos editables (<code>.docx</code>, <code>.doc</code>) y los archivos temporales de Word</td></tr>
@@ -101,18 +101,22 @@ El trabajo presenta una **Especificación de Requisitos del Software (SRS)** del
 
 ```mermaid
 flowchart TD
-    A[1. Introducción] --> B[2. Descripción general]
-    B --> C[3. Requisitos específicos]
-    C --> C1[3.1 Interfaces externas]
-    C --> C2[3.2 Funciones - Objetivos, Casos de uso y RF]
-    C --> C3[3.3 Requisitos de rendimiento]
-    C --> C4[3.4 Requisitos lógicos de la base de datos]
-    C --> C5[3.5 Restricciones de diseño]
-    C --> C6[3.6 Atributos del sistema]
-    C --> D[4. Matriz de trazabilidad]
-    D --> E[5. Conclusiones]
-    E --> F[6. Bibliografía]
-    F --> G[7. Agradecimiento]
+    A[Ficha del documento] --> B[1. Introducción]
+    B --> B1[1.3 Personal involucrado]
+    B --> C[2. Descripción general]
+    C --> D[3. Requisitos específicos]
+    D --> D1[3.1 Interfaces del sistema]
+    D --> D2[3.2 Objetivos]
+    D --> D3[3.3 Casos de uso]
+    D --> D4[3.4 Requisitos funcionales de sistema]
+    D --> D5[3.5 Requisitos no funcionales]
+    D --> D6[3.6 Requisitos de información]
+    D --> D7[3.7 Diccionario de datos]
+    D --> D8[3.8 Matriz CRUD]
+    D --> E[4. Matriz de trazabilidad]
+    E --> F[5. Conclusiones]
+    F --> G[6. Bibliografía]
+    G --> H[7. Agradecimiento]
 ```
 
 ---
@@ -122,14 +126,16 @@ flowchart TD
 ```mermaid
 flowchart LR
     P["Vision y alcance"] --> Q["Requisitos del usuario RU"]
-    Q --> R["UC-03 Crear y asignar tareas"]
-    Q --> S["UC-08 Notificaciones y recordatorios"]
-    R --> T["Requisitos funcionales RF"]
-    S --> T
-    R --> U["Requisitos no funcionales RNF"]
-    S --> U
-    R --> V["Requisitos de informacion RI"]
-    S --> V
+    Q --> R1["UC-01 Registrarse y unirse a un equipo"]
+    Q --> R2["UC-03 Crear y asignar tareas"]
+    Q --> R3["UC-04 Consultar el progreso"]
+    Q --> R4["UC-08 Notificaciones y recordatorios"]
+    R1 --> T["Requisitos funcionales RF"]
+    R2 --> T
+    R3 --> T
+    R4 --> T
+    T --> U["Requisitos no funcionales RNF"]
+    T --> V["Requisitos de informacion RI"]
     V --> W["Diccionario de datos y modelo E-R"]
     T --> X["Matriz de trazabilidad RF x RU"]
     U --> X
@@ -143,7 +149,9 @@ flowchart LR
 
 | Caso de uso | Descripción |
 |:---|:---|
+| **UC-01: Registrarse y unirse a un equipo** | Registro con correo institucional e incorporación a un equipo mediante código de invitación |
 | **UC-03: Crear y asignar tareas del equipo** | Creación de tareas con responsable y plazo, con notificación inmediata al miembro asignado por chat y push |
+| **UC-04: Consultar el progreso de las tareas** | Tablero con el estado de las tareas del equipo, con filtros y actualización en tiempo real |
 | **UC-08: Recibir notificaciones y recordatorios** | Recordatorios automáticos push antes del vencimiento de las tareas pendientes, con antelación configurable |
 
 ---
@@ -166,7 +174,7 @@ flowchart LR
 1. Descargar o abrir `Desarrollo_Proyecto_Alejandro_De_Mendoza_Tovar.pdf` desde este repositorio.
 2. Seguir la estructura descrita en [📐 Estructura del Documento](#-estructura-del-documento): de la introducción a la matriz de trazabilidad.
 3. Revisar las **fichas de requisitos** (sección 3) para ver la especificación individual con sus atributos.
-4. Consultar el **diccionario de datos y la matriz CRUD** (3.4) y la **matriz de trazabilidad** (sección 4).
+4. Consultar el **diccionario de datos y la matriz CRUD** (3.7 y 3.8) y la **matriz de trazabilidad** (sección 4).
 
 ---
 
@@ -177,16 +185,17 @@ flowchart LR
 
 | Elemento | Sección | Incluido |
 |:---|:---|:---:|
+| Ficha del documento | Portada | ✔ |
 | Introducción y alcance | 1 | ✔ |
+| Personal involucrado | 1.3 | ✔ |
 | Descripción general del producto | 2 | ✔ |
-| Interfaces externas | 3.1 | ✔ |
-| Objetivos y casos de uso | 3.2 | ✔ |
-| Requisitos funcionales (EARS) | 3.2 | ✔ |
-| Requisitos de rendimiento | 3.3 | ✔ |
-| Requisitos de información | 3.4 | ✔ |
-| Diccionario de datos y modelo E-R | 3.4 | ✔ |
-| Matriz CRUD | 3.4 | ✔ |
-| Atributos del sistema (RNF) | 3.6 | ✔ |
+| Interfaces del sistema | 3.1 | ✔ |
+| Objetivos y casos de uso | 3.2 y 3.3 | ✔ |
+| Requisitos funcionales (EARS) | 3.4 | ✔ |
+| Requisitos no funcionales | 3.5 | ✔ |
+| Requisitos de información | 3.6 | ✔ |
+| Diccionario de datos y modelo E-R | 3.7 | ✔ |
+| Matriz CRUD | 3.8 | ✔ |
 | Matriz de trazabilidad | 4 | ✔ |
 | Conclusiones | 5 | ✔ |
 | Bibliografía | 6 | ✔ |
